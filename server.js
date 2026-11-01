@@ -6,12 +6,10 @@ const app = express();
 
 app.use(express.json({ limit: "10kb" }));
 
+app.use(express.static("public"));
+
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
-});
-
-app.get("/", (req, res) => {
-    res.send("RANGER AI Backend is running!");
 });
 
 app.post("/api/chat", async (req, res) => {
